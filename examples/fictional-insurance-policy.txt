@@ -1,0 +1,8 @@
+Example Assurance Company
+
+Private Health Insurance Policy Summary
+Policyholder: Alex Example
+Policy number: EXAMPLE-00001
+Coverage period: 1 January 2026 to 31 December 2026
+
+This fictional example describes covered hospital treatment, exclusions, and the premium payment schedule. It is included solely to demonstrate the document-classification workflow and contains no real personal information.

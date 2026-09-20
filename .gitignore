@@ -1,0 +1,19 @@
+# Private data and model artifacts
+*.safetensors
+*.xlsx
+*.xls
+*.pdf
+*.docx
+*.png
+*.jpg
+*.jpeg
+*.zip
+data/
+model/
+outputs/
+__pycache__/
+.venv/
+
+# Local editor and OS files
+.DS_Store
+.vscode/
