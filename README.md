@@ -1,10 +1,22 @@
-# Fine-tuning Phi-4 Mini with LoRA for document classification
+# Local document classification with Phi-4 Mini and LoRA
 
-This project demonstrates an end-to-end fine-tuning workflow for classifying mixed personal and work documents. A LoRA adapter was trained on Microsoft Phi-4 Mini Instruct to return a document category and a 1–5 long-term retention score.
+## Problem
 
-The public repository contains sanitized code, fictional examples, aggregate metrics, and deployment documentation. It intentionally excludes source documents, extracted text, real paths, labels tied to individual files, and model weights.
+People sorting mixed personal documents need a way to prioritize what to review and retain without sending their files to a remote service.
 
-## Outcome
+## Decision
+
+Fine-tune a local model to suggest one category and a 1–5 retention score. Route suggestions to a review queue so a person can confirm or correct the proposed metadata.
+
+## Proof
+
+The tuned model reached **58.3% category accuracy on 60 held-out documents**. That result supports using the model to suggest labels for review. **[See an illustrative review queue entry](REVIEW-EXAMPLE.md)** or read the [training report](docs/training-report.md).
+
+## Next
+
+Run a [same-test-set comparison](docs/evaluation-plan.md) against the prompted base model to measure the contribution of the LoRA adapter.
+
+## Held-out results
 
 The model returns structured JSON such as:
 
@@ -20,8 +32,6 @@ The model returns structured JSON such as:
 | Category macro F1 | 53.2% |
 | Exact importance accuracy | 45.0% |
 | Importance within one point | 93.3% |
-
-These results support a human review workflow, not automatic file deletion or irreversible organization.
 
 ## What I built
 
@@ -71,7 +81,7 @@ scripts/    Local inference example
 
 ## Privacy and safety
 
-The original dataset contains sensitive document classes, including finance, medical, identity, immigration, and legal material. Those files, their contents, and their paths are deliberately absent from this repository. The classifier should suggest labels for a person to review; it must not delete, move, or overwrite documents.
+The public repository contains sanitized code, fictional examples, aggregate metrics, and deployment documentation. Source documents, extracted text, real paths, per-file labels, and model weights stay in the authorized local environment. The classifier should suggest labels for a person to review; it must not delete, move, or overwrite documents.
 
 ## License
 
